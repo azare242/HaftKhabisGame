@@ -16,7 +16,7 @@ public class Number2 extends OperationAtPlayersCard {
     public void operation(Game game,Player src , Player dst){
         Random r = new Random();
         int index = r.nextInt(src.cardsCount());
-        Card transfer = src.getCards(index);
+        Card transfer = src.getCard(index);
         src.removeCard(transfer);
         dst.addCard(transfer);
         game.goNext();

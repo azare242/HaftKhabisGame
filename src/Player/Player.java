@@ -51,8 +51,8 @@ public abstract class Player {
     public int cardsCount(){
         return cards.size() - 1;
     }
-    public Card getCards(int index){
-        return cards.get(index - 1);
+    public Card getCard(int index){
+        return cards.get(index);
     }
     public void printCardsInHand() {
         if (cards.isEmpty()){

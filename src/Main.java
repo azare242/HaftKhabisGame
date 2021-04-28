@@ -75,7 +75,6 @@ public class Main {
         }
         game.changeWise();
         game.goNext();
-        game.p();
 
         for (int i = 0 ; i < 3 ; ++i){
             Player player = game.getCurrentPlayer();
