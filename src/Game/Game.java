@@ -28,6 +28,7 @@ public class Game {
         currentPlayerIndex = 0;
         currentPlayer = this.players.get(0);
         setPlayersCardsInHand();
+        setFirstCard();
     }
     private void setPlayersCardsInHand(){
 
@@ -43,15 +44,9 @@ public class Game {
     private void setMagazine(ArrayList<Card> cards){
         magazine = cards;
     }
+
     public void setFirstCard(){
-        Random r = new Random();
-        while (true){
-            Card temp = magazine.get(r.nextInt(magazine.size()));
-            if (temp instanceof NoOperationCard) {
-                centerCard = temp;
-                break;
-            }
-        }
+        centerCard = magazine.get(0);
         this.nextTurnColor = centerCard.getColor();
         this.centerCardColor = centerCard.getColor();
         this.centerCardNumber = centerCard.getNumber();

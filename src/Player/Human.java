@@ -56,12 +56,13 @@ public class Human extends Player {
         switch (index) {
             case "1" -> {
                 System.out.print("Chose Your Card: ");
-                index = in.next();
+                int input;
                 while (true) {
-                    if (OtherClasses.Check.checkIndex(index, this)) break;
+                     input = in.nextInt();
+                    if (OtherClasses.Check.checkIndex(input, this)) break;
                     else System.out.println("Invalid input , Try Again");
                 }
-                Card temp = game.getCard(Integer.parseInt(index));
+                Card temp = cards.get(input - 1);
                 if (canPlayCard(game, temp)) {
                     game.playerPlayCard(temp);
                     cards.remove(temp);

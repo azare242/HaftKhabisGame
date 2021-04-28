@@ -64,24 +64,25 @@ public class Main {
 //            System.out.println(game.getCurrentPlayer().toString());
 //        }
 
-        Game game = GameInitializer.initializeGame();
-
-        for (int i = 0 ; i < 3 ; ++i){
-            Player player = game.getCurrentPlayer();
-            player.printCardsInHand();
-            System.out.println();
-            if (i < 2)
-            game.goNext();
-        }
-        game.changeWise();
-        game.goNext();
-
-        for (int i = 0 ; i < 3 ; ++i){
-            Player player = game.getCurrentPlayer();
-            player.printCardsInHand();
-            System.out.println();
-            game.goNext();
-        }
+//        Game game = GameInitializer.initializeGame();
+//
+//        for (int i = 0 ; i < 3 ; ++i){
+//            Player player = game.getCurrentPlayer();
+//            player.printCardsInHand();
+//            System.out.println();
+//            if (i < 2)
+//            game.goNext();
+//        }
+//        game.changeWise();
+//        game.goNext();
+//
+//        for (int i = 0 ; i < 3 ; ++i){
+//            Player player = game.getCurrentPlayer();
+//            player.printCardsInHand();
+//            System.out.println();
+//            game.goNext();
+//        }
+        Run.play();
     }
 
 }

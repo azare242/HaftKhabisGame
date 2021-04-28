@@ -22,7 +22,7 @@ public abstract class Player {
             return false;
         }
         for (Card card : cards){
-            if (card.getColor().equals(game.getNextTurnColor()) || card.getColor().equals(game.getCenterCardNumber()) || card instanceof NumberB) return true;
+            if (card.getColor().equals(game.getNextTurnColor()) || card.getColor().equals(game.getCenterCardNumber()) || card.getNumber().equals("B")) return true;
         }
         return false;
     }
@@ -31,7 +31,7 @@ public abstract class Player {
         if (game.getCenterCardNumber().equals("7")){
             return card.getNumber().equals("7");
         }
-        return card.getColor().equals(game.getNextTurnColor()) || card.getNumber().equals(game.getCenterCardNumber()) || card instanceof NumberB ;
+        return card.getColor().equals(game.getNextTurnColor()) || card.getNumber().equals(game.getCenterCardNumber()) || card.getNumber().equals("B") ;
     }
     public void addCard(Card card) {
         cards.add(card);
