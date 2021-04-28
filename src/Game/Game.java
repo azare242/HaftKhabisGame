@@ -147,7 +147,10 @@ public class Game {
         removeCard(temp);
         return temp;
     }
-    public void p(){
-        System.out.println(wise);
+    public int playersCount(){
+        return players.size();
+    }
+    public Player getPlayer(int index) {
+        return players.get(index - 1);
     }
 }

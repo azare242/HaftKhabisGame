@@ -49,7 +49,7 @@ public class NoOperationCard extends Card {
 
     @Override
     public void operation(Game game,Player src , Player dst) {
-        System.out.print("");
+        game.goNext();
     }
 
     private void setPoint(){
@@ -61,9 +61,4 @@ public class NoOperationCard extends Card {
         if (number.equals("C")) point = 12;
         if (number.equals("D")) point = 13;
     }
-
-    public void defOp(Game game){
-        game.goNext();
-    }
-
 }

@@ -1,7 +1,7 @@
 package OtherClasses;
 
 import Player.Player;
-
+import Game.*;
 public class Check {
 
     public static boolean checkIndex(String index,Player player){
@@ -14,5 +14,10 @@ public class Check {
             return Character.isDigit(index.charAt(0)) && Character.isDigit(index.charAt(1)) && Integer.parseInt(index) < player.cardsCount();
 
         return false;
+    }
+    public static boolean checkIndex(String index,Game game){
+        if (index.length() > 1) return false;
+
+        return Character.isDigit(index.charAt(0)) && Integer.parseInt(index) < game.playersCount();
     }
 }

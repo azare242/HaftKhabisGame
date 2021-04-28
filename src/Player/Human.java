@@ -64,11 +64,27 @@ public class Human extends Player{
                     else System.out.println("Invalid input , Try Again");
                 }
                 Card temp = game.getCard(Integer.parseInt(index));
-                if (canPlayCard(game,temp)){
+                if (canPlayCard(game,temp)) {
                     game.playerPlayCard(temp);
                     cards.remove(temp);
-                    if (!(temp instanceof Number7Normal || temp instanceof Number7Black))
-                        temp.operation(game,game.getCurrentPlayer(),game.getNextPlayer());
+                    if (!(temp instanceof Number7Normal || temp instanceof Number7Black)) {
+                        if (temp instanceof Number2) {
+                            System.out.print("Enter Player Number To Get Card: ");
+                            while (true) {
+                                String playerIndex = in.next();
+                                if (Check.checkIndex(playerIndex,game)) {
+                                    int index1 = Integer.parseInt(playerIndex);
+                                    Player player = game.getPlayer(index1);
+                                    temp.operation(game,game.getCurrentPlayer(),player);
+                                    break;
+                                }
+                                else System.out.println("Invalid Input , Try Again");
+                            }
+                        }
+                        else
+                            temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
+
+                    }
                 }
                 else System.out.println("You Can't Play This card");
 
