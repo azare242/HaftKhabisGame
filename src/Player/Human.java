@@ -42,7 +42,7 @@ public class Human extends Player {
     public void playTurn(Game game) {
         Scanner in = new Scanner(System.in);
         printCardsInHand();
-        System.out.println("1.Play Your Turn\n2.Pick a Card");
+        System.out.println("1.Play\n2.Punish");
         String index;
         while (true) {
             index = in.next();
@@ -118,7 +118,7 @@ public class Human extends Player {
         printCardsInHand();
         if (have7()) System.out.println("You Have Seven In Your Hand !!!");
         else System.out.println("You Don't Seven In Your Hand");
-        System.out.println("1.Play Your Turn\n2.Pick a Card");
+        System.out.println("1.Play\n2.Punish");
         String index;
         while (true) {
             index = in.next();

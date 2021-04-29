@@ -6,6 +6,7 @@ import Game.*;
 import Player.Player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Run {
 
@@ -44,6 +45,10 @@ public class Run {
             game.printCenterCard();
             currentPlayer.playTurn(game);
 
+        }
+        for (int i = 1 ; i <= game.playersCount() ; ++i){
+            Player player = game.getPlayer(i);
+            System.out.println(player.getName() + " Score : " + (player.getScore() == 0 ? "Winner!!!" : player.getScore()) );
         }
 
     }

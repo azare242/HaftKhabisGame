@@ -14,6 +14,7 @@ public class Number2 extends OperationAtPlayersCard {
 
     @Override
     public void operation(Game game,Player src , Player dst){
+        if (src.cardsCount() == 0) return;
         Random r = new Random();
         int index = r.nextInt(src.cardsCount());
         Card transfer = src.getCard(index);
