@@ -1,29 +1,43 @@
 package Player;
 
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import Game.*;
 import Cards.*;
 import OtherClasses.*;
-
+/**
+ * A Class That extends Player For Human
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.27
+ */
 public class Human extends Player {
 
+    /** Name Of Player*/
     private String name;
 
+    /**
+     * Constructor For Human Player
+     * @param name name of player
+     */
     public Human(String name) {
         super();
         this.name = name;
     }
 
+    /**
+     * get Name Of Player
+     * @return name of player
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
+    /**
+     * Equality check
+     * @param o object for compare
+     * @return equality
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,12 +46,20 @@ public class Human extends Player {
         return getName().equals(human.getName());
     }
 
+    /**
+     * Hashcode
+     * @return hashcode
+     */
     @Override
     public int hashCode() {
         return Objects.hash(getName());
     }
 
 
+    /**
+     * Player Play His Turn
+     * @param game game
+     */
     @Override
     public void playTurn(Game game) {
         Scanner in = new Scanner(System.in);
@@ -113,6 +135,11 @@ public class Human extends Player {
         }
     }
 
+    /**
+     * Player Play his turn for Center card is Number7
+     * @param game game
+     * @return player played or not
+     */
     public boolean PlayTurn7(Game game) {
         Scanner in = new Scanner(System.in);
         printCardsInHand();

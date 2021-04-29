@@ -3,13 +3,25 @@ package Game;
 import Cards.*;
 import OtherClasses.*;
 import Game.*;
-import Player.Player;
+import Player.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
+/**
+ * A Class That Contains A Run OF Game of Dirty-seven (UNO)
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.27
+ */
 public class Run {
 
+    /**
+     * Check Game
+     *
+     * It return false if a player out of cards
+     * @param game game
+     * @return a player out of cards or not
+     */
     private static boolean checkGame(Game game) {
         for (int i = 1; i < game.playersCount(); ++i) {
             if (game.getPlayer(i).cardsCount() == 0) return false;
@@ -17,6 +29,14 @@ public class Run {
             return true;
     }
 
+    /**
+     * Play
+     *
+     * Initialize Game
+     * Play Game
+     * End Game
+     * EZ :D
+     */
     public static void play(){
         Game game = GameInitializer.initializeGame();
 

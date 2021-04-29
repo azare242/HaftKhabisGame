@@ -2,19 +2,40 @@ package Cards;
 
 import Player.*;
 import Game.*;
-import java.awt.*;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+/**
+ * A Class That extends Operation At Players Card for Number 2 Card
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.25
+ */
 
 public class Number2 extends OperationAtPlayersCard {
 
+    /**
+     * Card Constructor
+     * @param color card color
+     */
     public Number2(String color) {
         super(color,"2");
     }
 
+    /**
+     * Operation of Card
+     *
+     * Player Gives A Card To an other player
+     * @param game game
+     * @param src source player
+     * @param dst destination Card
+     */
     @Override
     public void operation(Game game,Player src , Player dst){
-        if (src.cardsCount() == 0) return;
+        if (src.cardsCount() == 0) {
+            System.out.println("Player Out Of Cards!!!");
+            game.goNext();
+            return;
+        }
+
         Random r = new Random();
         int index = r.nextInt(src.cardsCount());
         Card transfer = src.getCard(index);
@@ -26,7 +47,10 @@ public class Number2 extends OperationAtPlayersCard {
     }
 
 
-
+    /**
+     * An Array Of String for Print Card at hand of player
+     * @return string array
+     */
     @Override
     public String[] toStringArray() {
         String[] result = new String[6];
@@ -43,6 +67,10 @@ public class Number2 extends OperationAtPlayersCard {
         return result;
     }
 
+    /**
+     * An Array Of String for Print Card at last of hand of player
+     * @return string at last array
+     */
     @Override
     public String[] atLastToStringArray() {
         String[] result = new String[6];

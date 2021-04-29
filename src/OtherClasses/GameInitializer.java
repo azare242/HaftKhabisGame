@@ -5,8 +5,20 @@ import Cards.*;
 import OtherClasses.*;
 import Player.*;
 import Game.*;
+/**
+ * A Class That Initialize A Dirty-Seven (UNO) Game
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.27
+ */
 public class GameInitializer {
 
+    /**
+     * Initialize A Game
+     *
+     * With Bot or With Friends
+     * @return Game
+     */
     public static Game initializeGame() {
         ArrayList<Card> magazine = MagazineInitializer.initializeMagazine();
         Scanner in = new Scanner(System.in);

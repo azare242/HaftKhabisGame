@@ -1,13 +1,27 @@
 package Cards;
 
-import Game.Game;
-import Player.Player;
-
+import Game.*;
+import Player.*;
+/**
+ * A Class That extends Operation At Game Card for NumberB Card
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.25
+ */
 public class NumberB extends OperationAtGameCard{
 
+    /**
+     * Card Constructor
+     * @param color card color
+     */
     public NumberB(String color) {
         super(color,"B");
     }
+
+    /**
+     * An Array Of String for Print Card at hand of player
+     * @return string array
+     */
     @Override
     public String[] toStringArray() {
         String[] result = new String[6];
@@ -24,6 +38,10 @@ public class NumberB extends OperationAtGameCard{
         return result;
     }
 
+    /**
+     * An Array Of String for Print Card at last of hand of player
+     * @return string at last array
+     */
     @Override
     public String[] atLastToStringArray() {
         String[] result = new String[6];
@@ -40,6 +58,15 @@ public class NumberB extends OperationAtGameCard{
         for (int i = 0 ; i < 6 ; ++i) result[i] += reset;
         return result;
     }
+
+    /**
+     * Operation of Card
+     *
+     * Player Can Change Next Turn Color of Card
+     * @param game game
+     * @param src source player
+     * @param dst destination Card
+     */
     @Override
     public void operation(Game game,Player src , Player dst) {
         game.changeNextCardColor(src);

@@ -1,14 +1,29 @@
 package Cards;
 import Game.*;
-import Player.Player;
+import Player.*;
 
+/**
+ * A Class That extends Card For No Operation Cards
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.25
+ */
 public class NoOperationCard extends Card {
 
+    /**
+     * Card Constructor
+     * @param color card color
+     * @param number cord number
+     */
     public NoOperationCard(String number, String color){
         super(color,number);
         setPoint();
     }
 
+    /**
+     * An Array Of String for Print Card at hand of player
+     * @return string array
+     */
     @Override
     public String[] toStringArray() {
         String[] result = new String[6];
@@ -28,6 +43,10 @@ public class NoOperationCard extends Card {
         return result;
     }
 
+    /**
+     * An Array Of String for Print Card at last of hand of player
+     * @return string at last array
+     */
     @Override
     public String[] atLastToStringArray() {
         String[] result = new String[6];
@@ -47,12 +66,24 @@ public class NoOperationCard extends Card {
         return result;
     }
 
+
+    /**
+     * Operation of Card
+     *
+     * Nothing Happen But Game Goes To Next Player
+     * @param game game
+     * @param src source player
+     * @param dst destination Card
+     */
     @Override
     public void operation(Game game,Player src , Player dst) {
         System.out.println(src.getName() + " Play " + color + '-' + number);
         game.goNext();
     }
 
+    /**
+     *SET POINT OF CARD
+     */
     private void setPoint(){
         if (number.equals("3")) point = 3;
         if (number.equals("4")) point = 4;

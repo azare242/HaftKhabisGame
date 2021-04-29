@@ -1,10 +1,19 @@
 package OtherClasses;
 import Cards.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
+/**
+ * A Class That Initialize And [Shuffle] It
+ * @author Alireza Zare Zeynabadi
+ * @version 1.0
+ * @since 2021.april.27
+ */
 public class MagazineInitializer {
 
+    /**
+     * Initializr Cards
+     * @return shuffled magazine
+     */
     public static ArrayList<Card> initializeMagazine(){
         ArrayList<Card> magazine = new ArrayList<>();
 
