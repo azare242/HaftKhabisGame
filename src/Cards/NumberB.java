@@ -42,7 +42,9 @@ public class NumberB extends OperationAtGameCard{
     }
     @Override
     public void operation(Game game,Player src , Player dst) {
-        game.changeNextCardColor();
+        game.changeNextCardColor(src);
+        System.out.println(src.getName() + " Play " + color + '-' + number);
+        System.out.println(src.getName() + " Change Set Next Color to " + game.getNextTurnColor());
         game.goNext();
     }
 }

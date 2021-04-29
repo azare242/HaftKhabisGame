@@ -49,6 +49,7 @@ public class NoOperationCard extends Card {
 
     @Override
     public void operation(Game game,Player src , Player dst) {
+        System.out.println(src.getName() + " Play " + color + '-' + number);
         game.goNext();
     }
 

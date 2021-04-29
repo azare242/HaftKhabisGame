@@ -31,7 +31,7 @@ public abstract class Player {
         if (game.getCenterCardNumber().equals("7")){
             return card.getNumber().equals("7");
         }
-        return card.getColor().equals(game.getNextTurnColor()) || card.getNumber().equals(game.getCenterCardNumber()) || card.getNumber().equals("B") ;
+        return card.getColor().equalsIgnoreCase(game.getNextTurnColor()) || card.getNumber().equals(game.getCenterCardNumber()) || card.getNumber().equals("B") ;
     }
     public void addCard(Card card) {
         cards.add(card);
@@ -49,7 +49,7 @@ public abstract class Player {
     }
 
     public int cardsCount(){
-        return cards.size() - 1;
+        return cards.size();
     }
     public Card getCard(int index){
         return cards.get(index);
@@ -73,4 +73,5 @@ public abstract class Player {
         }
         System.out.println();
     }
+    public abstract String getName();
 }

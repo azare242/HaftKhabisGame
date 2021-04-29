@@ -76,8 +76,7 @@ public class Game {
         currentPlayer = players.get(currentPlayerIndex);
     }
     public void repeatTurn(){
-        int repeat = currentPlayerIndex;
-        currentPlayer = players.get(repeat);
+        System.out.println("Wow You Can Play again!");
     }
     public void changeWise(){
         wise *= -1;
@@ -86,7 +85,16 @@ public class Game {
     public boolean currentIs7(){
         return centerCard instanceof Number7Black || centerCard instanceof Number7Normal;
     }
-    public void changeNextCardColor() {
+    public void changeNextCardColor(Player player) {
+        Random r = new Random();
+        if (player.getName().equalsIgnoreCase("bot")){
+            String[] colors = new String[]{
+                    "Black" , "Blue" , "Green" , "Red"
+            };
+            this.nextTurnColor = colors[r.nextInt(4)];
+            return;
+        }
+
         System.out.print("Set Next Card Color(black,green,red,blue): ");
         Scanner in = new Scanner(System.in);
         while (true) {
@@ -147,5 +155,13 @@ public class Game {
     }
     public Player getPlayer(int index) {
         return players.get(index - 1);
+    }
+
+    public void printPlayersList(){
+        int i = 1;
+        for (Player player : players){
+            System.out.println("" + i +"-"+ player.getName());
+            i++;
+        }
     }
 }

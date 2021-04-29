@@ -41,6 +41,9 @@ public class Number10 extends OperationAtGameCard{
     }
     @Override
     public void operation(Game game,Player src,Player dst) {
+        System.out.println(src.getName() + " Play " + color + '-' + number);
+        System.out.println("It changes wise of game");
         game.changeWise();
+        game.goNext();
     }
 }

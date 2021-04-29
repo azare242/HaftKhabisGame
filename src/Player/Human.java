@@ -59,7 +59,7 @@ public class Human extends Player {
                 int input;
                 while (true) {
                      input = in.nextInt();
-                    if (OtherClasses.Check.checkIndex(input, this)) break;
+                    if (input > 0 && input <= cardsCount()) break;
                     else System.out.println("Invalid input , Try Again");
                 }
                 Card temp = cards.get(input - 1);
@@ -68,12 +68,12 @@ public class Human extends Player {
                     cards.remove(temp);
                     if (!(temp.getNumber().equals("7"))) {
                         if (temp.getNumber().equals("2")) {
+                            game.printPlayersList();
                             System.out.print("Enter Player Number To Get Card: ");
                             while (true) {
-                                String playerIndex = in.next();
-                                if (Check.checkIndex(playerIndex, game)) {
-                                    int index1 = Integer.parseInt(playerIndex);
-                                    Player player = game.getPlayer(index1);
+                                int inpuT = in.nextInt();
+                                if (inpuT > 0 && inpuT <= game.playersCount()) {
+                                    Player player = game.getPlayer(inpuT);
                                     temp.operation(game, game.getCurrentPlayer(), player);
                                     break;
                                 } else System.out.println("Invalid Input , Try Again");
@@ -94,12 +94,12 @@ public class Human extends Player {
                     System.out.println("Punishment Card Can be Played !!!");
                     if (!(temp.getNumber().equals("7"))) {
                         if (temp.getNumber().equals("2")) {
+                            game.printPlayersList();
                             System.out.print("Enter Player Number To Get Card: ");
                             while (true) {
-                                String playerIndex = in.next();
-                                if (Check.checkIndex(playerIndex, game)) {
-                                    int index1 = Integer.parseInt(playerIndex);
-                                    Player player = game.getPlayer(index1);
+                                int inpuT = in.nextInt();
+                                if (inpuT > 0 && inpuT <= game.playersCount()) {
+                                    Player player = game.getPlayer(inpuT);
                                     temp.operation(game, game.getCurrentPlayer(), player);
                                     break;
                                 } else System.out.println("Invalid Input , Try Again");

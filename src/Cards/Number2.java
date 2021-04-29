@@ -19,6 +19,8 @@ public class Number2 extends OperationAtPlayersCard {
         Card transfer = src.getCard(index);
         src.removeCard(transfer);
         dst.addCard(transfer);
+        System.out.println(src.getName() + " Play " + color + '-' + number);
+        System.out.println(src.getName() + " give a card to " + dst.getName());
         game.goNext();
     }
 

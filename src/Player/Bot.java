@@ -19,9 +19,14 @@ public class Bot extends Player{
     }
     private Player playerWithMinimumCards(Game game) {
         ArrayList<Integer> cardsCounts = new ArrayList<>();
-        for (int i = 1; i < game.playersCount(); i++) cardsCounts.add(game.getPlayer(i).cardsCount());
+        for (int i = 1; i < game.playersCount(); i++){
+            if (!game.getPlayer(i).getName().equals(game.getCurrentPlayer().getName())){
+                cardsCounts.add(game.getPlayer(i).cardsCount());
+            }
+        }
+
         int min = Collections.min(cardsCounts);
-        for (int i = 1; i < game.playersCount(); i++) {
+        for (int i = 1; i < game.playersCount() - 1; i++) {
             if (game.getPlayer(i).cardsCount() == min) return game.getPlayer(i);
         }
         return game.getNextPlayer();
@@ -59,5 +64,10 @@ public class Bot extends Player{
                 }
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Bot";
     }
 }

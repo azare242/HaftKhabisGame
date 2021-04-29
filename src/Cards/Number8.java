@@ -44,6 +44,7 @@ public class Number8 extends OperationAtGameCard{
 
     @Override
     public void operation(Game game,Player src, Player dst) {
+        System.out.println(src.getName() + " Play " + color + '-' + number);
         game.repeatTurn();
     }
 }

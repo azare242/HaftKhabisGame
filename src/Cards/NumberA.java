@@ -11,6 +11,8 @@ public class NumberA extends OperationAtGameCard{
 
     @Override
     public void operation(Game game,Player src , Player dst) {
+        System.out.println(src.getName() + " Play " + color + '-' + number);
+        System.out.println(dst.getName() + " lost his turn");
         game.goNext();
         game.goNext();
     }
