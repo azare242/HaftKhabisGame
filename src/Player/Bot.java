@@ -9,18 +9,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class Bot extends Player{
+public class Bot extends Player {
 
 
-    private ArrayList<Card> canPlayingCards(Game game){
+    private ArrayList<Card> canPlayingCards(Game game) {
         ArrayList<Card> cards = new ArrayList<>();
-        for (Card card : this.cards) if (canPlayCard(game,card)) cards.add(card);
+        for (Card card : this.cards) if (canPlayCard(game, card)) cards.add(card);
         return cards;
     }
+    private ArrayList<Card> sevenCards(){
+        ArrayList<Card> cards = new ArrayList<>();
+        for (Card card : this.cards) if (card.getNumber().equals("7")) cards.add(card);
+        return cards;
+    }
+
     private Player playerWithMinimumCards(Game game) {
         ArrayList<Integer> cardsCounts = new ArrayList<>();
-        for (int i = 1; i < game.playersCount(); i++){
-            if (!game.getPlayer(i).getName().equals(game.getCurrentPlayer().getName())){
+        for (int i = 1; i < game.playersCount(); i++) {
+            if (!game.getPlayer(i).getName().equals(game.getCurrentPlayer().getName())) {
                 cardsCounts.add(game.getPlayer(i).cardsCount());
             }
         }
@@ -35,34 +41,32 @@ public class Bot extends Player{
     @Override
     public void playTurn(Game game) {
         Random r = new Random();
-        if (checkCardsWithGameCenterCard(game)){
+        if (checkCardsWithGameCenterCard(game)) {
             Card temp = canPlayingCards(game).get(r.nextInt(canPlayingCards(game).size()));
             game.playerPlayCard(temp);
             cards.remove(temp);
             if (!(temp.getNumber().equals("7"))) {
                 if (temp.getNumber().equals("2")) {
                     Player player = playerWithMinimumCards(game);
-                    temp.operation(game,game.getCurrentPlayer(),player);
-                }
-                else
+                    temp.operation(game, game.getCurrentPlayer(), player);
+                } else
                     temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
-                }
             }
-        else {
+        } else {
             Card temp = game.getCardFromMagazine();
             cards.add(temp);
-            if (canPlayCard(game,temp)) {
+            if (canPlayCard(game, temp)) {
                 game.playerPlayCard(temp);
                 cards.remove(temp);
                 if (!(temp.getNumber().equals("7"))) {
                     if (temp.getNumber().equals("2")) {
                         Player player = playerWithMinimumCards(game);
-                        temp.operation(game,game.getCurrentPlayer(),player);
-                    }
-                    else
+                        temp.operation(game, game.getCurrentPlayer(), player);
+                    } else
                         temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
                 }
             }
+            else game.goNext();
         }
     }
 
@@ -70,4 +74,16 @@ public class Bot extends Player{
     public String getName() {
         return "Bot";
     }
+
+    public boolean PlayTurn7(Game game) {
+        Random r = new Random();
+        if (have7()) {
+            Card temp = sevenCards().get(r.nextInt(sevenCards().size()));
+            game.playerPlayCard(temp);
+            cards.remove(temp);
+            return true;
+        }
+        return false;
+    }
+
 }

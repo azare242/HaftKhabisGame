@@ -15,7 +15,7 @@ public class Number7Black extends Number7 {
             dst.addCard(punish);
             game.removeCard(punish);
         }
-        game.goNext();
+
     }
 
 }

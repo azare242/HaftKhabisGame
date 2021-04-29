@@ -17,6 +17,5 @@ public class Number7Normal extends Number7{
             dst.addCard(punish);
             game.removeCard(punish);
         }
-        game.goNext();
     }
 }

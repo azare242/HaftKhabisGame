@@ -108,7 +108,42 @@ public class Human extends Player {
                             temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
                     }
                 }
+                else game.goNext();
             }
         }
+    }
+
+    public boolean PlayTurn7(Game game) {
+        Scanner in = new Scanner(System.in);
+        printCardsInHand();
+        if (have7()) System.out.println("You Have Seven In Your Hand !!!");
+        else System.out.println("You Don't Seven In Your Hand");
+        System.out.println("1.Play Your Turn\n2.Pick a Card");
+        String index;
+        while (true) {
+            index = in.next();
+            if (index.equals("1")) break;
+            else if (index.equals("2")) {
+                if (!checkCardsWithGameCenterCard(game)) break;
+                else System.out.println("You Can Play Your Cards!");
+            } else System.out.println("Invalid Input , Try Again");
+        }
+
+        if (index.equals("1")) {
+            System.out.print("Chose Your Card: ");
+            int input;
+            while (true) {
+                input = in.nextInt();
+                if (input > 0 && input <= cardsCount()) break;
+                else System.out.println("Invalid input , Try Again");
+            }
+            Card temp = cards.get(input - 1);
+            if (cardIs7(temp)) {
+                game.playerPlayCard(temp);
+                cards.remove(temp);
+            } else System.out.println("You Can't Play This card");
+            return true;
+        }
+        return false;
     }
 }

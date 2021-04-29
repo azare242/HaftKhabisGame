@@ -30,6 +30,7 @@ public class Game {
         setPlayersCardsInHand();
         setFirstCard();
     }
+
     private void setPlayersCardsInHand(){
 
         for (Player player : players){
@@ -46,7 +47,9 @@ public class Game {
     }
 
     public void setFirstCard(){
-        centerCard = magazine.get(0);
+        for (Card card : magazine) {
+            if (card instanceof NoOperationCard) centerCard = card;
+        }
         this.nextTurnColor = centerCard.getColor();
         this.centerCardColor = centerCard.getColor();
         this.centerCardNumber = centerCard.getNumber();
@@ -117,6 +120,8 @@ public class Game {
         this.centerCardNumber = centerCard.getNumber();
     }
     public void printCenterCard(){
+        if (!nextTurnColor.equals(centerCardColor))
+        System.out.println("You Must Play " + nextTurnColor + " Card" );
         for (String s : centerCard.atLastToStringArray()) {
             System.out.println(s);
         }
@@ -126,12 +131,12 @@ public class Game {
         return currentPlayer;
     }
     public Player getNextPlayer(){
-        currentPlayerIndex = (currentPlayerIndex + wise);
+        int next = (currentPlayerIndex + wise);
 
-        if (currentPlayerIndex < 0 ) currentPlayerIndex += players.size();
-        if (currentPlayerIndex >= players.size()) currentPlayerIndex -= players.size();
+        if (next < 0 ) next += players.size();
+        if (next >= players.size()) next -= players.size();
 
-        return players.get(currentPlayerIndex);
+        return players.get(next);
     }
     public String getCenterCardColor() {
         return centerCardColor;
@@ -159,9 +164,15 @@ public class Game {
 
     public void printPlayersList(){
         int i = 1;
-        for (Player player : players){
-            System.out.println("" + i +"-"+ player.getName());
+        for (Player player1 : players){
+
+            if (!player1.getName().equals(currentPlayer.getName())) {
+                System.out.println("" + i +"-"+ player1.getName());
+            }
             i++;
         }
+    }
+    public Card getCenterCard(){
+        return centerCard;
     }
 }

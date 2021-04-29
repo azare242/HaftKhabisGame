@@ -13,25 +13,20 @@ public abstract class Player {
     }
 
     public abstract void playTurn(Game game);
+    public abstract boolean PlayTurn7(Game game);
 
     protected boolean checkCardsWithGameCenterCard(Game game){
-        if (game.getCenterCardNumber().equals("7")) {
-            for (Card card : cards){
-                if (card.getNumber().equals("7")) return true;
-            }
-            return false;
-        }
         for (Card card : cards){
-            if (card.getColor().equals(game.getNextTurnColor()) || card.getColor().equals(game.getCenterCardNumber()) || card.getNumber().equals("B")) return true;
+            if (card.getColor().equalsIgnoreCase(game.getNextTurnColor()) || card.getNumber().equals(game.getCenterCardNumber()) || card.getNumber().equals("B")) return true;
         }
         return false;
     }
 
     protected boolean canPlayCard(Game game,Card card){
-        if (game.getCenterCardNumber().equals("7")){
-            return card.getNumber().equals("7");
-        }
         return card.getColor().equalsIgnoreCase(game.getNextTurnColor()) || card.getNumber().equals(game.getCenterCardNumber()) || card.getNumber().equals("B") ;
+    }
+    protected boolean cardIs7(Card card){
+        return card.getNumber().equals("7");
     }
     public void addCard(Card card) {
         cards.add(card);
@@ -74,4 +69,10 @@ public abstract class Player {
         System.out.println();
     }
     public abstract String getName();
+    public boolean have7(){
+        for (Card card : cards) {
+            if (card.getNumber().equals("7")) return true;
+        }
+        return false;
+    }
 }
