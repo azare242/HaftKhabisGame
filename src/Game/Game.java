@@ -295,7 +295,7 @@ public class Game {
         for (Player player1 : players){
 
             if (!player1.getName().equals(currentPlayer.getName())) {
-                System.out.println("" + i +"-"+ player1.getName());
+                System.out.println("" + i +"-"+ player1.getName() + " Cards = " + player1.cardsCount());
             }
             i++;
         }

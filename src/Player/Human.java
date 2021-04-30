@@ -149,10 +149,10 @@ public class Human extends Player {
         String index;
         while (true) {
             index = in.next();
-            if (index.equals("1")) break;
+            if (index.equals("1") && have7()) break;
             else if (index.equals("2")) {
-                if (!checkCardsWithGameCenterCard(game)) break;
-                else System.out.println("You Can Play Your Cards!");
+                if (!have7()) break;
+                else if (have7()) System.out.println("You Can Play Your Cards!");
             } else System.out.println("Invalid Input , Try Again");
         }
 
@@ -169,8 +169,10 @@ public class Human extends Player {
                 game.playerPlayCard(temp);
                 cards.remove(temp);
             } else System.out.println("You Can't Play This card");
+
             return true;
         }
+
         return false;
     }
 }

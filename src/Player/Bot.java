@@ -81,8 +81,10 @@ public class Bot extends Player {
             }
         } else {
             Card temp = game.getCardFromMagazine();
+            System.out.println(getName() + " Punished");
             cards.add(temp);
             if (canPlayCard(game, temp)) {
+                System.out.println(getName() + " Player punishment card");
                 game.playerPlayCard(temp);
                 cards.remove(temp);
                 if (!(temp.getNumber().equals("7"))) {
@@ -93,7 +95,8 @@ public class Bot extends Player {
                         temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
                 }
             }
-            else game.goNext();
+            else
+                game.goNext();
         }
     }
 

@@ -23,7 +23,7 @@ public class Run {
      * @return a player out of cards or not
      */
     private static boolean checkGame(Game game) {
-        for (int i = 1; i < game.playersCount(); ++i) {
+        for (int i = 1; i <= game.playersCount(); ++i) {
             if (game.getPlayer(i).cardsCount() == 0) return false;
         }
             return true;
@@ -39,13 +39,16 @@ public class Run {
      */
     public static void play(){
         Game game = GameInitializer.initializeGame();
-
+        ArrayList<Card> n7s = new ArrayList<>(); //store Number7s played continuous
         while (checkGame(game))
         {
+            game.printCenterCard();
             Player currentPlayer = game.getCurrentPlayer();
+
+
             if (game.currentIs7()){
-                ArrayList<Card> n7s = new ArrayList<>();
                 boolean playSeven = currentPlayer.PlayTurn7(game);
+
 
                 if (playSeven){
                     n7s.add(game.getCenterCard());
@@ -54,16 +57,22 @@ public class Run {
                 }
                 else {
                     for (Card card : n7s) {
-                        card.operation(game,currentPlayer,game.getNextPlayer());
+                        card.operation(game,currentPlayer,currentPlayer);
                     }
+                    n7s.clear();
+                    game.printCenterCard();
                     System.out.println(currentPlayer.getName() + " Doesn't Have Seven !!!");
                     currentPlayer.playTurn(game);
-                    game.goNext();
+
+                    if (game.currentIs7()) game.goNext();
                 }
             }
 
-            game.printCenterCard();
-            currentPlayer.playTurn(game);
+            if (!game.currentIs7()) {
+                currentPlayer.playTurn(game);
+
+                if (game.currentIs7()) game.goNext();
+            }
 
         }
         for (int i = 1 ; i <= game.playersCount() ; ++i){

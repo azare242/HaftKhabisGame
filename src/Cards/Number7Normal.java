@@ -27,7 +27,7 @@ public class Number7Normal extends Number7{
      */
     @Override
     public void operation(Game game, Player src,Player dst) {
-        for (int i = 0 ; i < 2 ; ++i){
+        for (int i = 1 ; i <= 2 ; ++i){
             Card punish = game.getCard(i);
             dst.addCard(punish);
             game.removeCard(punish);
