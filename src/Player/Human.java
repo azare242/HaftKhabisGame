@@ -103,7 +103,7 @@ public class Human extends Player {
                         } else
                             temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
 
-                    }
+                    } else game.goNext();
                 } else System.out.println("You Can't Play This card");
 
             }
@@ -129,8 +129,10 @@ public class Human extends Player {
                         } else
                             temp.operation(game, game.getCurrentPlayer(), game.getNextPlayer());
                     }
+                    else game.goNext();
                 }
                 else game.goNext();
+
             }
         }
     }
@@ -161,7 +163,7 @@ public class Human extends Player {
             int input;
             while (true) {
                 input = in.nextInt();
-                if (input > 0 && input <= cardsCount()) break;
+                if (input > 0 && input <= cardsCount() && input != game.getCurrentPlayerIndex()) break;
                 else System.out.println("Invalid input , Try Again");
             }
             Card temp = cards.get(input - 1);

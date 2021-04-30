@@ -61,24 +61,24 @@ public class Run {
                     }
                     n7s.clear();
                     game.printCenterCard();
+                    game.printCenterCard();
                     System.out.println(currentPlayer.getName() + " Doesn't Have Seven !!!");
                     currentPlayer.playTurn(game);
-
-                    if (game.currentIs7()) game.goNext();
                 }
             }
 
             if (!game.currentIs7()) {
                 currentPlayer.playTurn(game);
-
-                if (game.currentIs7()) game.goNext();
             }
 
         }
+
+        System.out.println("------------------------------------------------------");
         for (int i = 1 ; i <= game.playersCount() ; ++i){
             Player player = game.getPlayer(i);
             System.out.println(player.getName() + " Score : " + (player.getScore() == 0 ? "Winner!!!" : player.getScore()) );
         }
+        System.out.println("------------------------------------------------------");
 
     }
 }
