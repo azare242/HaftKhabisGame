@@ -63,6 +63,7 @@ public class Human extends Player {
     @Override
     public void playTurn(Game game) {
         Scanner in = new Scanner(System.in);
+        System.out.println(name + " Turn: ");
         printCardsInHand();
         System.out.println("1.Play\n2.Punish");
         String index;
@@ -143,6 +144,7 @@ public class Human extends Player {
      * @return player played or not
      */
     public boolean PlayTurn7(Game game) {
+        System.out.println(name + " Turn: ");
         Scanner in = new Scanner(System.in);
         printCardsInHand();
         if (have7()) System.out.println("You Have Seven In Your Hand !!!");

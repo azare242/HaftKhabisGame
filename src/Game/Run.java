@@ -45,7 +45,6 @@ public class Run {
             game.printCenterCard();
             Player currentPlayer = game.getCurrentPlayer();
 
-
             if (game.currentIs7()){
                 boolean playSeven = currentPlayer.PlayTurn7(game);
 
@@ -60,7 +59,6 @@ public class Run {
                         card.operation(game,currentPlayer,currentPlayer);
                     }
                     n7s.clear();
-                    game.printCenterCard();
                     game.printCenterCard();
                     System.out.println(currentPlayer.getName() + " Doesn't Have Seven !!!");
                     currentPlayer.playTurn(game);
